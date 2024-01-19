@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Aang",
+    "magic": "Air",
+    "photo": "https://i.pinimg.com/736x/47/d0/f9/47d0f9ee3f00aef8406af77cdde44b1d.jpg"
+  },
+  {
+    "name": "Katara",
+    "magic": "Water",
+    "photo": "https://facts.net/wp-content/uploads/2023/09/25-facts-about-katara-avatar-the-last-airbender-1694440295.jpg"
+  },
+  {
+    "name": "Zuko",
+    "magic": "Fire",
+    "photo": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/df208114-6a56-4d72-857f-31af174319da/d1pb2hk-9f545d08-1e04-4702-be8c-52cefe55a92a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RmMjA4MTE0LTZhNTYtNGQ3Mi04NTdmLTMxYWYxNzQzMTlkYVwvZDFwYjJoay05ZjU0NWQwOC0xZTA0LTQ3MDItYmU4Yy01MmNlZmU1NWE5MmEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.c08e0z-Mis7GkurxZQvVkxT5Gd5E_1Av_5rf8t55T4Q"
+  },
+  {
+    "name": "Toph",
+    "magic": "Earth",
+    "photo": "https://i.pinimg.com/564x/c2/bc/23/c2bc23fadf9be431b5e979d65bb9fbfe.jpg"
+  }
+]
