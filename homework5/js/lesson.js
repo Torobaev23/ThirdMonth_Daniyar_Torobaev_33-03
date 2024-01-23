@@ -1,0 +1,115 @@
+// PHONE CHECKER
+
+const phoneInput = document.querySelector('#phone_input')
+const phoneButton = document.querySelector('#phone_button')
+const phoneResult = document.querySelector('#phone_result')
+
+const regExp = /^\+996 [2579]\d{2} \d{2}-\d{2}-\d{2}$/
+
+phoneButton.onclick = () => {
+    if (regExp.test(phoneInput.value)) {
+        phoneResult.innerHTML = 'OK'
+        phoneResult.style.color = 'green'
+    } else {
+        phoneResult.innerHTML = 'NO OK'
+        phoneResult.style.color = 'red'
+    }
+}
+
+// TAB SLIDER
+
+const tabContents = document.querySelectorAll('.tab_content_block')
+const tabItems = document.querySelectorAll('.tab_content_item')
+const tabParent = document.querySelector('.tab_content_items')
+const hideTabContent = () => {
+    tabContents.forEach( (tabBlock)=> {
+        tabBlock.style.display = 'none'
+    })
+    tabItems.forEach((tab)=> {
+        tab.classList.remove('tab_content_item_active')
+    })
+}
+
+const showTabContent = (index = 0) => {
+    tabContents[index].style.display = 'block'
+    tabItems[index].classList.add('tab_content_item_active')
+}
+
+hideTabContent()
+showTabContent()
+
+tabParent.onclick = (event) => {
+    if (event.target.classList.contains('tab_content_item')) {
+        tabItems.forEach((tabItem , tabIndex) => {
+            if (event.target === tabItem) {
+                hideTabContent()
+                currentTub = tabIndex
+                showTabContent(currentTub)
+            }
+        })
+    }
+}
+
+
+let currentTub = 0
+const autoSlider = () => {
+    hideTabContent()
+    currentTub = (currentTub + 1) % tabItems.length
+    showTabContent(currentTub)
+}
+setInterval(autoSlider ,2000)
+
+
+// CONVERTER
+
+const  somInput = document.querySelector('#som')
+const  usdInput = document.querySelector('#usd')
+const  eurInput = document.querySelector('#eur')
+const  aedInput = document.querySelector('#aed')
+
+
+const converter = (element , targetElement ,targetElement2 , targetElement3 , currentValue) => {
+    element.oninput = () => {
+        const request = new XMLHttpRequest()
+        request.open('GET' , '../data/converter.json')
+        request.setRequestHeader('Content-type' , 'application/json')
+        request.send()
+
+        request.onload = () => {
+            const response = JSON.parse(request.response)
+            switch (currentValue) {
+                case 'som' :
+                    targetElement.value = (element.value / response.usd).toFixed(2)
+                    targetElement2.value = (element.value / response.eur).toFixed(2)
+                    targetElement3.value = (element.value / response.aed).toFixed(2)
+                break
+                case 'usd' :
+                    targetElement.value = (element.value * response.usd).toFixed(2)
+                    targetElement2.value = (element.value / 1.09).toFixed(2)
+                    targetElement3.value = (element.value / 0.27).toFixed(2)
+                break
+                case 'eur' :
+                    targetElement.value = (element.value * response.eur).toFixed(2)
+                    targetElement2.value = (element.value / 0.92).toFixed(2)
+                    targetElement3.value = (element.value / 0.25).toFixed(2)
+                break
+                case 'aed' :
+                    targetElement.value = (element.value * response.aed).toFixed(2)
+                    targetElement2.value = (element.value / 3.67).toFixed(2)
+                    targetElement3.value = (element.value / 4).toFixed(2)
+                break
+
+                default:
+                    break
+            }
+            element.value === '' && (targetElement.value = '')
+            element.value === '' && (targetElement2.value = '')
+            element.value === '' && (targetElement3.value = '')
+        }
+    }
+}
+
+converter(somInput , usdInput , eurInput , aedInput,'som')
+converter(usdInput , somInput , eurInput , aedInput,'usd')
+converter(eurInput , somInput , usdInput , aedInput,'eur')
+converter(aedInput , somInput , usdInput , eurInput,'aed')
